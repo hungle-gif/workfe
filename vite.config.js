@@ -8,7 +8,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     preview: {
-      port: parseInt(env.VITE_PREVIEW_PORT) || 3033
+      port: parseInt(env.VITE_PREVIEW_PORT) || 3033,
+      allowedHosts: env.VITE_ALLOWED_HOSTS ? env.VITE_ALLOWED_HOSTS.split(',').map(s => s.trim()) : []
     },
     server: {
       port: parseInt(env.VITE_DEV_PORT) || 5173,
