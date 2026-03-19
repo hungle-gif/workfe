@@ -14,7 +14,7 @@ export function SocketProvider({ children }) {
     if (!user) return;
 
     const token = localStorage.getItem('token');
-    const newSocket = io({ auth: { token } });
+    const newSocket = io(import.meta.env.VITE_SOCKET_URL || undefined, { auth: { token } });
 
     newSocket.on('notification', (data) => {
       setNotifications(prev => [data, ...prev]);
